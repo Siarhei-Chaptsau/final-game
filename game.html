@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <title>Игра</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" type="image/png" href="./assets/images/img/icon-html.png" />
+  </head>
+  <body>
+    <section class="page-header-game">
+      <div class="page-header-game__wrapper"></div>
+    </section>
+
+    <section class="slogan">
+      <div class="slogan__wrapper">
+        <h1 class="slogan__text">Осторожно, игра задействует мозговой сектор</h1>
+      </div>
+    </section>
+
+    <form class="form" method="post">
+      <div class="form__wrapper">
+      <section class="form__fields  fields-text">
+        <fieldset class="fields-text__items">
+          <label class="fields-text__item">
+            <span class="fields-text__title">Фамилия:</span>
+            <input class="fields-text__input" type="text" name="surname" placeholder="Укажите фамилию *" required>
+          </label>
+          <label class="fields-text__item">
+            <span class="fields-text__title">Имя:</span>
+            <input class="fields-text__input" type="text" name="name" placeholder="Введите ваше имя *" required>
+          </label>
+          <label class="fields-text__item">
+            <span class="fields-text__title">Почта:</span>
+            <input class="fields-text__input" type="email" name="email" placeholder="Введите почту *" required>
+          </label>
+        </fieldset>
+      </section>
+
+      <section class="form__fields  fields-radio">
+        <fieldset class="fields-radio__items">
+          <legend class="fields-radio__legend">Выберите своего персонажа:</legend>
+          <label class="fields-radio__item">
+            <input class="fields-radio__input" type="radio" name="character" data-name="Картман" value="0" checked>
+            <span class="fields-radio__text">Эрик Картман</span>
+          </label>
+          <label class="fields-radio__item">
+            <input class="fields-radio__input" type="radio" name="character" data-name="Кайл" value="1">
+            <span class="fields-radio__text">Кайл Брофловски</span>
+          </label>
+          <label class="fields-radio__item">
+            <input class="fields-radio__input" type="radio" name="character" data-name="Стэн" value="2">
+            <span class="fields-radio__text">Стэн Марш</span>
+          </label>
+        </fieldset>
+      </section>
+
+      <section class="form__fields  field-action">
+        <button class="field-action__btn" type="submit">НАЧАТЬ ИГРУ</button>
+        <p class="field-action__text"><span class="field-action__index">*</span> — обязательные <span class="field-action__hidden"> для заполнения</span> поля</p>
+      </section>
+      </div>
+    </form>
+
+    <section class="game">
+      <div class="game__wrapper">
+        <div class="game__header">
+          <div class="game__info-block  game__info-block--user">
+			      <p class="game__nickname  game__nickname--character"></p>
+			      <div class="game__life-block">
+              <div class="game__life-line-container">
+			          <div class="game__life-line  game__life-line--character" style="width: 100%;"></div>
+              </div>
+			        <p class="game__life-num">
+                <span class="game__life-amount  game__life-amount--character">100 </span>
+                 / 100
+              </p>
+		        </div>
+		      </div>
+
+          <div class="game__level">
+            <p class="game__level-text">Уровень
+              <span class="game__level-span">1</span>
+            </p>
+          </div>
+
+          <div class="game__info-block  game__info-block--enemy">
+			      <p class="game__nickname  game__nickname--enemy"></p>
+		        <div class="game__life-block  game__life-block--enemy">
+              <div class="game__life-line-container  game__life-line-container--enemy">
+			          <div class="game__life-line  game__life-line--enemy" style="width: 100%;"></div>
+              </div>
+			        <p class="game__life-num  game__life-num--enemy">
+                <span class="game__life-amount  game__life-amount--enemy">100 </span>
+                / 100
+              </p>
+			      </div>
+		      </div>
+        </div>
+
+        <div class="game__message-container">
+          <div class="game__btn-container">
+            <button class="game__btn  game__btn--exit" type="submit">Выйти из игры</button>
+            <button class="game__btn  game__btn--next-round" type="submit" onclick="window.logicGame.initNextLevel();">Cледующий раунд</button>
+          </div>
+          <div class="game__level-message">
+            <p class="game__message-text">Уровень
+              <span class="game__message-span">1</span>
+            </p>
+          </div>
+        </div>
+
+        <div class="game__game-place">
+          <div class="game__character"></div>
+          <div class="game__enemy">
+            <div class="game__body-enemy"></div>
+            <div class="game__shorts-enemy"></div>
+            <div class="game__suits-enemy"></div>
+            <div class="game__hands-enemy"></div>
+            <div class="game__face-enemy"></div>
+            <div class="game__eyes-enemy"></div>
+            <div class="game__mouth-enemy"></div>
+            <div class="game__hat-enemy"></div>
+          </div>
+          <div class="game__boom-canvas">
+            <canvas class="boomAnimationActive" width="120" height="120" style="width: 200px; height: 200px;"></canvas>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="popup  popup--failure">
+      <div class="popup__wrapper">
+        <p class="popup__text  popup__text--failure">Заполните все поля формы</p>
+        <button class="popup__btn  popup__btn--failure" type="submit">OK</button>
+      </div>
+    </div>
+
+    <section class="popup  popup--score">
+      <div class="popup__wrapper">
+        <h3 class="popup__text  popup__text--result-round"></h3>
+        <h3 class="popup__text">Ваш счёт в баллах равен: <span class="popup__text  popup__text--score"></span></h3>
+        <div class="popup__table"></div>
+        <div class="popup__btn-container">
+          <button class="popup__btn  popup__btn--game" type="submit">Играть</button>
+          <button class="popup__btn  popup__btn--exit" type="submit">Выйти</button>
+        </div>
+      </div>
+    </section>
+
+    <div class="popup  popup--incantations">
+      <div class="popup__wrapper  popup__wrapper--incantations">
+        <h3 class="popup__text  popup__text--incantations">Выберите тип заклинания:</h3>
+        <div class="popup__incantation-links">
+		      <button class="popup__incantation-btn  btn" data-value="restore" type="submit">Лечиться</button>
+		      <button class="popup__incantation-btn  btn" data-value="power1x" type="submit">Атака с блоком (урон х1)</button>
+		      <button class="popup__incantation-btn  btn" data-value="power2x" type="submit">Атака без блока (урон х2)</button>
+		    </div>
+      </div>
+    </div>
+
+    <section class="modal-container  modal-container--arithmetic">
+      <div class="modal-container__wrapper">
+        <div class="modal-container__item">
+          <p class="modal-container__text">Решите задачу, и тогда вы сможете нанести
+            урон противнику! Округление до целого числа.
+          </p>
+          <div class="modal-container__task">
+            <span class="modal-container__num  modal-container__num--1">2</span>
+            <span class="modal-container__sign  modal-container__sign--1">+</span>
+            <span class="modal-container__num  modal-container__num--2">2</span>
+            <span class="modal-container__sign  modal-container__sign--2">*</span>
+            <span class="modal-container__num  modal-container__num--3">2</span> =
+            <label class="modal-container__label">
+              <input class="modal-container__input  modal-container__input--arithmetic" type="text">
+            </label>
+          </div>
+          <button class="modal-container__btn  modal-container__btn--arithmetic" type="submit">Готово</button>
+          <p class="modal-container__result"></p>
+        </div>
+      </div>
+    </section>
+
+    <section class="modal-container  modal-container--translation">
+      <div class="modal-container__wrapper">
+        <div class="modal-container__item">
+          <p class="modal-container__text">Переведите на русский язык:</p>
+          <div class="modal-container__task">
+            <p class="modal-container__word"></p>
+            <div class = "modal-container__wraper--translation"></div>
+            <label class="modal-container__label">
+              <input class="modal-container__input  modal-container__input--translation" type="text">
+            </label>
+          </div>
+          <button class="modal-container__btn  modal-container__btn--translation" type="submit">Готово</button>
+          <p class="modal-container__result  modal-container__result--translation"></p>
+        </div>
+      </div>
+    </section>
+
+    <section class="modal-container  modal-container--drug_n_drop">
+      <div class="modal-container__wrapper">
+        <div class="modal-container__item">
+          <p class="modal-container__text">Составь слово из букв:</p>
+          <div class="modal-container__task">
+            <p class="modal-container__word"></p>
+            <div class = "modal-container__wraper--drug_n_drop">
+              <div id="box1" ondragover="event.preventDefault()" ondrop="window.drug_n_DropTask.dropWord(event)">
+                <div class="mover_drug_n_drop mover1" draggable="true" ondragstart="window.drug_n_DropTask.dragWord(event)">П</div>
+              </div>
+              <div id="box2" ondragover="event.preventDefault()" ondrop="window.drug_n_DropTask.dropWord(event)">
+                <div class="mover_drug_n_drop mover2" draggable="true" ondragstart="window.drug_n_DropTask.dragWord(event)">И</div>
+              </div>
+              <div id="box3" ondragover="event.preventDefault()" ondrop="window.drug_n_DropTask.dropWord(event)">
+                <div class="mover_drug_n_drop mover3" draggable="true" ondragstart="window.drug_n_DropTask.dragWord(event)">Р</div>
+              </div>
+              <div id="box4" ondragover="event.preventDefault()" ondrop="window.drug_n_DropTask.dropWord(event)">
+                <div class="mover_drug_n_drop mover4" draggable="true" ondragstart="window.drug_n_DropTask.dragWord(event)">В</div>
+              </div>
+              <div id="box5" ondragover="event.preventDefault()" ondrop="window.drug_n_DropTask.dropWord(event)">
+                <div class="mover_drug_n_drop mover5" draggable="true" ondragstart="window.drug_n_DropTask.dragWord(event)">Е</div>
+              </div>
+              <div id="box6" ondragover="event.preventDefault()" ondrop="window.drug_n_DropTask.dropWord(event)">
+                <div class="mover_drug_n_drop mover6" draggable="true" ondragstart="window.drug_n_DropTask.dragWord(event)">Т</div>
+              </div>
+            </div>
+          </div>
+          <button class="modal-container__input  modal-container__btn  modal-container__btn--drug_n_drop" type="submit">Готово</button>
+          <p class="modal-container__result  modal-container__result--drug_n_drop"></p>
+        </div>
+      </div>
+    </section>
+
+    <section class="modal-container  modal-container--audition">
+      <div class="modal-container__wrapper">
+        <div class="modal-container__item">
+          <p class="modal-container__text">Прослушайте и переведите на русский язык:</p>
+          <div class="modal-container__task">
+            <button class="modal-container__btn-speak" type="submit">Слушать</button>
+            <label class="modal-container__label">
+              <input class="modal-container__input  modal-container__input--audition" type="text">
+            </label>
+          </div>
+          <button class="modal-container__btn  modal-container__btn--audition" type="submit">Готово</button>
+          <p class="modal-container__result  modal-container__result--auditionp"></p>
+        </div>
+      </div>
+    </section>
+
+    <script type="text/javascript" src="bundle.3e80d3715bda077179da.js"></script>
+  </body>
+</html>
