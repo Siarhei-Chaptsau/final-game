@@ -1,0 +1,310 @@
+.game {
+  display: none;
+  position: relative;
+  margin: 0 auto;
+  width: 100%;
+  min-height: 100vh;
+  background-color: #1d2631;
+  background-size: cover;
+  background-size: 100%;
+  background-repeat: no-repeat;
+  background-image: url("../../images/img/bg-sp.jpg");
+}
+
+.game--show {
+  display: block;
+}
+
+.game--disabled {
+  opacity: 0.1;
+}
+
+.game__wrapper {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+/*-- Поле инфы о силе героя и уровень --*/
+
+.game__header {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.game__info-block {
+  position: relative;
+  width: auto;
+  min-height: 95px;
+  padding: 10px;
+  margin: 15px 15px 0 15px;
+  background-color: #2de8e6;
+  border: 1px solid #4ad6d6;
+  border-radius: 10px;
+  box-sizing: border-box;
+}
+
+.game__info-block--enemy {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.game__nickname {
+  margin-bottom: 10px;
+  text-align: left;
+  font-size: 32px;
+  font-weight: 700;
+}
+
+.game__nickname--enemy {
+  text-align: right;
+}
+
+.game__life-block {
+  width: 200px;
+}
+
+.game__life-block--enemy {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.game__life-line-container {
+  width: 202px;
+  height: 12px;
+  margin-bottom: 10px;
+  border: 1px solid #000;
+  background-color: #defffa5c;
+  box-sizing: border-box;
+}
+
+.game__life-line-container--enemy {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.game__life-line {
+  width: 100%;
+  height: 9.9px;
+  background-color: #ff0081;
+}
+
+.game__life-num {
+  text-align: left;
+}
+
+.game__level {
+  width: auto;
+  margin-top: 15px;
+  padding: 20px 15px;
+  text-align: center;
+  border: 1px solid #4ad6d6;
+  border-radius: 10px;
+  background-color: #49eaea;
+}
+
+.game__level-text,
+.game__level-span {
+  font-size: 28px;
+  font-weight: 700;
+}
+
+/*-- Поле для сообщений --*/
+
+.game__message-container {
+  position: relative;
+  height: 360px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.game__level-message {
+  display: none;
+  position: absolute;
+  width: 300px;
+  height: 100px;
+  margin: auto;
+  top: 0;
+  right: 5.5%;
+  bottom: 0;
+  left: 0;
+  background-color: rgba(255, 102, 179, 0.86);
+  animation-name: swirl-in-fwd, slit-out-vertical;
+  animation-timing-function: ease-out, ease-in;
+  animation-delay: 0.1s, 2s;
+  animation-duration: 0.6s, 0.7s;
+  animation-fill-mode: both, forwards;
+}
+
+.game__level-message--show {
+  display: block;
+}
+
+@keyframes swirl-in-fwd {
+  0% {
+    transform: rotate(-540deg) scale(0);
+    opacity: 0;
+  }
+  100% {
+    transform: rotate(0) scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes slit-out-vertical {
+  0% {
+    transform: translateZ(0) rotateY(0);
+    opacity: 1;
+  }
+  54% {
+    transform: translateZ(-160px) rotateY(87deg);
+    opacity: 1;
+  }
+  100% {
+    transform: translateZ(-800px) rotateY(90deg);
+    opacity: 0;
+  }
+}
+
+.game__message-text {
+  padding: 30px;
+  text-align: center;
+  font-size: 36px;
+  font-weight: 700;
+}
+
+.game__message {
+  display: block; /* скрыто когда ходит оппонент */
+  position: absolute;
+  top: 100px;
+  left: 500px;
+  padding-top: 100px;
+  font-size: 36px;
+  font-weight: 700;
+  color: red;
+}
+
+.game__btn-container {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  top: 15%;
+}
+
+.game__btn {
+  width: 220px;
+  padding: 15px 20px;
+  text-align: center;
+  font-size: 30px;
+  font-weight: 700;
+  background-color: #fff;
+  border-radius: 8px;
+  text-decoration: none;
+  cursor: pointer;
+  overflow: hidden;
+  transition: 0.2s;
+}
+
+.game__btn--exit {
+  font-size: 20px;
+  color: #ff0081;
+  border: 1px solid #ff0081;
+  margin-left: 15px;
+}
+
+.game__btn--exit:hover {
+  color: #fff;
+  box-shadow: inset 11em 0 0 0 #ff0081;
+}
+
+.game__btn--exit:active {
+  box-shadow: inset 11em 0 0 0 #ff0045;
+}
+
+.game__btn--next-round {
+  width: 350px;
+  align-self: center;
+  margin-right: 120px;
+  margin-top: 40px;
+  color: #66c887;
+  border: 1px solid #66c887;
+}
+
+.game__btn--next-round:hover {
+  color: #fff;
+  box-shadow: inset 12em 0 0 0 #66c887;
+}
+
+.game__btn--next-round:active {
+  box-shadow: inset 11em 0 0 0 #51ec7b;
+}
+
+/*-- Игровое поле --*/
+
+.game__game-place {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  margin-top: auto;
+  margin-bottom: 80px;
+}
+
+.game__character {
+  position: relative;
+}
+
+.game__enemy {
+  position: relative;
+}
+
+.game__shorts-enemy,
+.game__suits-enemy,
+.game__hands-enemy,
+.game__face-enemy,
+.game__eyes-enemy,
+.game__mouth-enemy,
+.game__hat-enemy {
+  position: absolute;
+  bottom: 0;
+}
+
+.game__boom-canvas {
+  position: absolute;
+  display: inline-block;
+  width: 120px;
+  height: 120px;
+  margin: 0 auto;
+  text-align: center;
+  z-index:20;
+}
+
+.boomAnimationActive {
+  position: absolute;
+  z-index:20;
+}
+.modal-container__wraper--drug_n_drop {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.mover_drug_n_drop {
+  width: 30px;
+  height: 2em;
+  line-height: 2em;
+  font-weight: 700;
+  padding: 2px;
+  background: #2194e0;
+  border: 2px solid #333333;
+  border-radius: 5px;
+  text-align: center;
+}

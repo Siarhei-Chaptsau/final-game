@@ -1,0 +1,38 @@
+.page-footer {
+  width: 100%;
+  margin: 0 auto;
+}
+
+.page-footer--hidden {
+  display: none;
+}
+
+.page-footer--disabled {
+  opacity: 0.3;
+}
+
+.page-footer__wrapper {
+  max-width: 1170px;
+  margin: 0 auto;
+  padding: 3px 0;
+  box-sizing: border-box;
+}
+
+.page-footer__text {
+  width: 280px;
+  margin: 0 auto;
+  padding: 10px;
+  text-align: center;
+  color: black;
+  line-height: 1.5;
+  background: #dad731;
+  border: solid 2px #111109;
+  border-radius: 3px;
+
+}
+
+.page-footer__link {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}

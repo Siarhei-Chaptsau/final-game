@@ -1,0 +1,91 @@
+.popup {
+  display: none;
+  position: fixed;
+  width: 460px;
+  left: 50%;
+  top: 15%;
+  transform: translate(-50%, -50%);
+  z-index: 5;
+}
+
+.popup--show {
+  display: block;
+}
+
+.popup--hidden {
+  display: none;
+}
+
+.popup__wrapper {
+  position: absolute;
+  width: 100%;
+  padding: 20px 50px 5px;
+  background-color: white;
+  box-shadow: 0 5px 20px 0 #DC143C;
+  box-sizing: border-box;
+}
+
+.popup__wrapper--incantations {
+  padding: 20px 20px 5px;
+  box-shadow: 0 5px 20px 0 #ff0081;
+}
+
+.popup__text {
+  font-size: 24px;
+  text-align: center;
+  line-height: 24px;
+  margin: 20px 0 40px;
+}
+
+.popup__text--failure {
+  font-size: 24px;
+}
+
+.popup__btn,
+.popup__incantation-btn {
+  display: block;
+  width: 250px;
+  margin: 0 auto;
+  margin-bottom: 30px;
+  padding: 15px 40px;
+  text-align: center;
+  border: none;
+  font-size: 24px;
+  font-weight: 700;
+  background-color: #DC143C;
+  color: #fff;
+  text-decoration: none;
+  cursor: pointer;
+  filter: opacity(70%);
+}
+
+.popup__btn:hover,
+.popup__incantation-btn:hover,
+.popup__btn--game:hover {
+  filter: opacity(85%);
+}
+
+.popup__btn:active {
+  filter: opacity(100%);
+}
+
+.popup__btn--game {
+  background-color: #32CD52;
+}
+
+/*-- модалка выборка заклинаний --*/
+
+.popup__incantation-btn {
+  position: relative;
+  width: 280px;
+  margin-top: 30px;
+  margin-bottom: 35px;
+  padding: 15px 25px;
+  border-radius: 4px;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 1.2;
+  background-color: #ff0081;
+  filter: opacity(60%);
+  box-sizing: border-box;
+}

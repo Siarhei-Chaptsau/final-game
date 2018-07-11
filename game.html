@@ -4,9 +4,13 @@
     <title>Игра</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="./assets/styles/css/style.css">
     <link rel="icon" type="image/png" href="./assets/images/img/icon-html.png" />
+    <link rel="import" id="link" href="./app/components/loading/loading-screen.html">
   </head>
   <body>
+    <loading-screen id="loader"></loading-screen>
+    <div id="loader_wrapper" class="animate-bottom">
     <section class="page-header-game">
       <div class="page-header-game__wrapper"></div>
     </section>
@@ -100,7 +104,7 @@
         <div class="game__message-container">
           <div class="game__btn-container">
             <button class="game__btn  game__btn--exit" type="submit">Выйти из игры</button>
-            <button class="game__btn  game__btn--next-round" type="submit" onclick="window.logicGame.initNextLevel();">Cледующий раунд</button>
+            <button class="game__btn  game__btn--next-round" type="submit">Cледующий раунд</button>
           </div>
           <div class="game__level-message">
             <p class="game__message-text">Уровень
@@ -135,17 +139,7 @@
       </div>
     </div>
 
-    <section class="popup  popup--score">
-      <div class="popup__wrapper">
-        <h3 class="popup__text  popup__text--result-round"></h3>
-        <h3 class="popup__text">Ваш счёт в баллах равен: <span class="popup__text  popup__text--score"></span></h3>
-        <div class="popup__table"></div>
-        <div class="popup__btn-container">
-          <button class="popup__btn  popup__btn--game" type="submit">Играть</button>
-          <button class="popup__btn  popup__btn--exit" type="submit">Выйти</button>
-        </div>
-      </div>
-    </section>
+    <section class="popup  popup--score"></section>
 
     <div class="popup  popup--incantations">
       <div class="popup__wrapper  popup__wrapper--incantations">
@@ -158,94 +152,11 @@
       </div>
     </div>
 
-    <section class="modal-container  modal-container--arithmetic">
-      <div class="modal-container__wrapper">
-        <div class="modal-container__item">
-          <p class="modal-container__text">Решите задачу, и тогда вы сможете нанести
-            урон противнику! Округление до целого числа.
-          </p>
-          <div class="modal-container__task">
-            <span class="modal-container__num  modal-container__num--1">2</span>
-            <span class="modal-container__sign  modal-container__sign--1">+</span>
-            <span class="modal-container__num  modal-container__num--2">2</span>
-            <span class="modal-container__sign  modal-container__sign--2">*</span>
-            <span class="modal-container__num  modal-container__num--3">2</span> =
-            <label class="modal-container__label">
-              <input class="modal-container__input  modal-container__input--arithmetic" type="text">
-            </label>
-          </div>
-          <button class="modal-container__btn  modal-container__btn--arithmetic" type="submit">Готово</button>
-          <p class="modal-container__result"></p>
-        </div>
-      </div>
-    </section>
+    <section class="modal-container  modal-container--arithmetic"></section>
+    <section class="modal-container  modal-container--translation"></section>
+    <section class="modal-container  modal-container--drug-n-drop"></section>
+    <section class="modal-container  modal-container--audition"></section>
 
-    <section class="modal-container  modal-container--translation">
-      <div class="modal-container__wrapper">
-        <div class="modal-container__item">
-          <p class="modal-container__text">Переведите на русский язык:</p>
-          <div class="modal-container__task">
-            <p class="modal-container__word"></p>
-            <div class = "modal-container__wraper--translation"></div>
-            <label class="modal-container__label">
-              <input class="modal-container__input  modal-container__input--translation" type="text">
-            </label>
-          </div>
-          <button class="modal-container__btn  modal-container__btn--translation" type="submit">Готово</button>
-          <p class="modal-container__result  modal-container__result--translation"></p>
-        </div>
-      </div>
-    </section>
-
-    <section class="modal-container  modal-container--drug_n_drop">
-      <div class="modal-container__wrapper">
-        <div class="modal-container__item">
-          <p class="modal-container__text">Составь слово из букв:</p>
-          <div class="modal-container__task">
-            <p class="modal-container__word"></p>
-            <div class = "modal-container__wraper--drug_n_drop">
-              <div id="box1" ondragover="event.preventDefault()" ondrop="window.drug_n_DropTask.dropWord(event)">
-                <div class="mover_drug_n_drop mover1" draggable="true" ondragstart="window.drug_n_DropTask.dragWord(event)">П</div>
-              </div>
-              <div id="box2" ondragover="event.preventDefault()" ondrop="window.drug_n_DropTask.dropWord(event)">
-                <div class="mover_drug_n_drop mover2" draggable="true" ondragstart="window.drug_n_DropTask.dragWord(event)">И</div>
-              </div>
-              <div id="box3" ondragover="event.preventDefault()" ondrop="window.drug_n_DropTask.dropWord(event)">
-                <div class="mover_drug_n_drop mover3" draggable="true" ondragstart="window.drug_n_DropTask.dragWord(event)">Р</div>
-              </div>
-              <div id="box4" ondragover="event.preventDefault()" ondrop="window.drug_n_DropTask.dropWord(event)">
-                <div class="mover_drug_n_drop mover4" draggable="true" ondragstart="window.drug_n_DropTask.dragWord(event)">В</div>
-              </div>
-              <div id="box5" ondragover="event.preventDefault()" ondrop="window.drug_n_DropTask.dropWord(event)">
-                <div class="mover_drug_n_drop mover5" draggable="true" ondragstart="window.drug_n_DropTask.dragWord(event)">Е</div>
-              </div>
-              <div id="box6" ondragover="event.preventDefault()" ondrop="window.drug_n_DropTask.dropWord(event)">
-                <div class="mover_drug_n_drop mover6" draggable="true" ondragstart="window.drug_n_DropTask.dragWord(event)">Т</div>
-              </div>
-            </div>
-          </div>
-          <button class="modal-container__input  modal-container__btn  modal-container__btn--drug_n_drop" type="submit">Готово</button>
-          <p class="modal-container__result  modal-container__result--drug_n_drop"></p>
-        </div>
-      </div>
-    </section>
-
-    <section class="modal-container  modal-container--audition">
-      <div class="modal-container__wrapper">
-        <div class="modal-container__item">
-          <p class="modal-container__text">Прослушайте и переведите на русский язык:</p>
-          <div class="modal-container__task">
-            <button class="modal-container__btn-speak" type="submit">Слушать</button>
-            <label class="modal-container__label">
-              <input class="modal-container__input  modal-container__input--audition" type="text">
-            </label>
-          </div>
-          <button class="modal-container__btn  modal-container__btn--audition" type="submit">Готово</button>
-          <p class="modal-container__result  modal-container__result--auditionp"></p>
-        </div>
-      </div>
-    </section>
-
-    <script type="text/javascript" src="bundle.3e80d3715bda077179da.js"></script>
+    <script src="bundle.js"></script>
   </body>
 </html>

@@ -1,0 +1,43 @@
+* {
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+html,
+body {
+  width: 100%;
+  height: 100%;
+  line-height: 1;
+  font-family: monospace, sans-serif;
+  font-size: 18px;
+  font-weight: 400;
+  color: #000;
+  background-color: #eaeaea;
+}
+
+.body--disabled {
+  overflow: hidden;
+}
+
+.btn--disabled {
+  filter: grayscale(70%);
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  border: none;
+}
+
+ol, ul {
+  list-style: none;
+}
+
+a:hover, a:active {
+  outline: none;
+}
+
+.animate-bottom {
+  display:none;
+}

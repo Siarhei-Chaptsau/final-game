@@ -1,0 +1,30 @@
+<div class="modal-container__wrapper">
+  <div class="modal-container__item">
+    <p class="modal-container__text">Составь слово из букв:</p>
+    <div class="modal-container__task">
+      <p class="modal-container__word"></p>
+      <div class = "modal-container__wraper--drug_n_drop">
+        <div id="box1" ondragover="event.preventDefault()" ondrop="window.dropWord(event)">
+          <div class="mover_drug_n_drop mover1" draggable="true" ondragstart="window.dragWord(event)"></div>
+        </div>
+        <div id="box2" ondragover="event.preventDefault()" ondrop="window.dropWord(event)">
+          <div class="mover_drug_n_drop mover2" draggable="true" ondragstart="window.dragWord(event)"></div>
+        </div>
+        <div id="box3" ondragover="event.preventDefault()" ondrop="window.dropWord(event)">
+          <div class="mover_drug_n_drop mover3" draggable="true" ondragstart="window.dragWord(event)"></div>
+        </div>
+        <div id="box4" ondragover="event.preventDefault()" ondrop="window.dropWord(event)">
+          <div class="mover_drug_n_drop mover4" draggable="true" ondragstart="window.dragWord(event)"></div>
+        </div>
+        <div id="box5" ondragover="event.preventDefault()" ondrop="window.dropWord(event)">
+          <div class="mover_drug_n_drop mover5" draggable="true" ondragstart="window.dragWord(event)"></div>
+        </div>
+        <div id="box6" ondragover="event.preventDefault()" ondrop="window.dropWord(event)">
+          <div class="mover_drug_n_drop mover6" draggable="true" ondragstart="window.dragWord(event)"></div>
+        </div>
+      </div>
+    </div>
+    <button class="modal-container__input  modal-container__btn  modal-container__btn--drug_n_drop" type="submit">Готово</button>
+    <p class="modal-container__result  modal-container__result--drug_n_drop"></p>
+  </div>
+</div>
